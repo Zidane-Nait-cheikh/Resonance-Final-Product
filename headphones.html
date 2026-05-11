@@ -9,7 +9,10 @@
     <title>Resonance - Headphone</title>
     <link rel="stylesheet" href="styling/headphones.css">
     <link rel="icon" type="image/x-icon" href="assets/pngegg.png">
-   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 <div style="background-image: linear-gradient(rgb(0, 0, 0), rgba(255, 255, 255, 0)), url('assets/image2.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
@@ -20,6 +23,9 @@
             <li><a href="headphones.html" class="active-link">Headphones</a></li>
             <li><a href="support.html">Support</a></li>
         </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
 
     <header class="page-header">
@@ -58,33 +64,38 @@
 
         <main class="product-grid">
             
-            <div class="shop-card" data-category="over-ear">
+            <div class="shop-card fade-in" data-category="over-ear" data-price="299" data-features="noise-cancelling wireless">
                 <div class="shop-img">
                     <div class="badge">New</div>
-                    <img src="assets/1.png" width="200px" loading="lazy"> </div>
+                    <img src="assets/1.png" width="200px" loading="lazy">
+                </div>
                 <div class="shop-details">
                     <h3>SonicScape Pro</h3>
                     <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        <span class="review-count">(142)</span>
                     </div>
                     <p class="shop-price">$299.00</p>
                     <button class="btn-shop">Add to Cart</button>
                 </div>
             </div>
 
-            <div class="shop-card" data-category="in-ear">
+            <div class="shop-card fade-in" data-category="in-ear" data-price="149" data-features="wireless water-resistant">
                 <div class="shop-img">
                     <img src="assets/2.png" width="200px" loading="lazy">
                 </div>
                 <div class="shop-details">
                     <h3>BassWave One</h3>
                     <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                        <span class="review-count">(87)</span>
                     </div>
                     <p class="shop-price">$149.00</p>
                     <button class="btn-shop">Add to Cart</button>
                 </div>
             </div>
 
-            <div class="shop-card" data-category="over-ear">
+            <div class="shop-card fade-in" data-category="over-ear" data-price="99" data-features="wireless">
                 <div class="shop-img">
                     <div class="badge sale">Sale</div>
                     <img src="assets/3.png" width="200px" loading="lazy">
@@ -92,46 +103,53 @@
                 <div class="shop-details">
                     <h3>Clarity Air</h3>
                     <div class="rating">
-                
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                        <span class="review-count">(63)</span>
                     </div>
                     <p class="shop-price"><span class="old-price">$150</span> $99.00</p>
                     <button class="btn-shop">Add to Cart</button>
                 </div>
             </div>
 
-            <div class="shop-card" data-category="on-ear">
+            <div class="shop-card fade-in" data-category="on-ear" data-price="89" data-features="noise-cancelling">
                 <div class="shop-img">
                     <img src="assets/4.png" width="200px" loading="lazy">
                 </div>
                 <div class="shop-details">
                     <h3>Zenith NoiseGard</h3>
                     <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <span class="review-count">(204)</span>
                     </div>
                     <p class="shop-price">$89.00</p>
                     <button class="btn-shop">Add to Cart</button>
                 </div>
             </div>
 
-            <div class="shop-card" data-category="over-ear">
+            <div class="shop-card fade-in" data-category="over-ear" data-price="159" data-features="wireless water-resistant">
                 <div class="shop-img">
                     <img src="assets/5.png" width="200px" loading="lazy">
                 </div>
                 <div class="shop-details">
                     <h3>PulseFlex Sport</h3>
                     <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                        <span class="review-count">(95)</span>
                     </div>
                     <p class="shop-price">$159.00</p>
                     <button class="btn-shop">Add to Cart</button>
                 </div>
             </div>
 
-            <div class="shop-card" data-category="in-ear">
+            <div class="shop-card fade-in" data-category="in-ear" data-price="149" data-features="noise-cancelling wireless">
                 <div class="shop-img">
                     <img src="assets/6.png" width="200px" loading="lazy">
                 </div>
                 <div class="shop-details">
                     <h3>RetroFidelity</h3>
                     <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        <span class="review-count">(118)</span>
                     </div>
                     <p class="shop-price">$149.00</p>
                     <button class="btn-shop">Add to Cart</button>
@@ -209,5 +227,142 @@
         </div>
     </footer>
 
+<script>
+    // ── Mobile hamburger (main nav) ──
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+    }));
+
+    // ── Sticky navbar ──
+    (function () {
+        const mainNav = document.querySelector('.navbar');
+        const sticky = document.createElement('div');
+        sticky.id = 'sticky-nav';
+        sticky.innerHTML = mainNav.innerHTML.replace('id="hamburger"', 'id="sticky-hamburger"');
+        document.body.prepend(sticky);
+        const sh = sticky.querySelector('#sticky-hamburger');
+        const snl = sticky.querySelector('.nav-links');
+        if (sh && snl) {
+            sh.addEventListener('click', () => { sh.classList.toggle('open'); snl.classList.toggle('open'); });
+            snl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { sh.classList.remove('open'); snl.classList.remove('open'); }));
+        }
+        window.addEventListener('scroll', () => sticky.classList.toggle('visible', window.scrollY > 200), { passive: true });
+    })();
+
+    // ── Back to top ──
+    (function () {
+        const btn = document.createElement('button');
+        btn.id = 'back-to-top';
+        btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        btn.title = 'Back to top';
+        document.body.appendChild(btn);
+        window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 400), { passive: true });
+        btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+
+    // ── Cart counter (persists via localStorage) ──
+    let cartCount = parseInt(localStorage.getItem('resonance-cart') || '0');
+
+    function createCartBtn(navEl) {
+        const btn = document.createElement('button');
+        btn.className = 'cart-btn';
+        btn.title = 'Cart';
+        btn.innerHTML = `<i class="fas fa-shopping-cart"></i><span id="cart-count">${cartCount}</span>`;
+        navEl.appendChild(btn);
+        document.getElementById('cart-count').classList.toggle('has-items', cartCount > 0);
+    }
+    createCartBtn(document.querySelector('.navbar'));
+
+    function updateCart() {
+        localStorage.setItem('resonance-cart', cartCount);
+        const el = document.getElementById('cart-count');
+        if (el) {
+            el.textContent = cartCount;
+            el.classList.toggle('has-items', cartCount > 0);
+            el.classList.remove('bump');
+            void el.offsetWidth;
+            el.classList.add('bump');
+        }
+    }
+
+    // ── Price slider ──
+    const slider = document.querySelector('.slider');
+    const priceVal = document.getElementById('price-val');
+    slider.addEventListener('input', () => { priceVal.textContent = slider.value; filterProducts(); });
+
+    // ── Product filter (category + features + price) ──
+    function filterProducts() {
+        const maxPrice = parseInt(slider.value);
+        const checkedCats = [...document.querySelectorAll('#cat1:checked,#cat2:checked,#cat3:checked')].map(e => e.id);
+        const catMap = { cat1: 'over-ear', cat2: 'on-ear', cat3: 'in-ear' };
+        const checkedFeats = [...document.querySelectorAll('#feat1:checked,#feat2:checked,#feat3:checked')].map(e => e.id);
+        const featMap = { feat1: 'noise-cancelling', feat2: 'wireless', feat3: 'water-resistant' };
+
+        let visible = 0;
+        document.querySelectorAll('.shop-card').forEach(card => {
+            const ok = parseInt(card.dataset.price) <= maxPrice &&
+                (checkedCats.length === 0 || checkedCats.some(id => catMap[id] === card.dataset.category)) &&
+                (checkedFeats.length === 0 || checkedFeats.every(id => (card.dataset.features || '').includes(featMap[id])));
+            card.style.display = ok ? '' : 'none';
+            if (ok) visible++;
+        });
+
+        // Show "no results" message
+        let noMsg = document.getElementById('no-results');
+        if (!noMsg) {
+            noMsg = document.createElement('p');
+            noMsg.id = 'no-results';
+            noMsg.style.cssText = 'color:#aaa;text-align:center;padding:40px;grid-column:1/-1;display:none;';
+            noMsg.textContent = 'No headphones match your filters.';
+            document.querySelector('.product-grid').appendChild(noMsg);
+        }
+        noMsg.style.display = visible === 0 ? 'block' : 'none';
+    }
+    document.querySelectorAll('.filter-group input[type="checkbox"]').forEach(cb => cb.addEventListener('change', filterProducts));
+
+    // ── Sort bar (injected above product grid) ──
+    (function () {
+        const grid = document.querySelector('.product-grid');
+        const bar = document.createElement('div');
+        bar.className = 'sort-bar';
+        bar.innerHTML = '<label for="sort-sel">Sort by:</label><select id="sort-sel"><option value="">Featured</option><option value="price-asc">Price: Low → High</option><option value="price-desc">Price: High → Low</option><option value="name">Name: A – Z</option></select>';
+        grid.parentNode.insertBefore(bar, grid);
+
+        document.getElementById('sort-sel').addEventListener('change', function () {
+            const cards = [...document.querySelectorAll('.shop-card')];
+            cards.sort((a, b) => {
+                if (this.value === 'price-asc') return a.dataset.price - b.dataset.price;
+                if (this.value === 'price-desc') return b.dataset.price - a.dataset.price;
+                if (this.value === 'name') return a.querySelector('h3').textContent.localeCompare(b.querySelector('h3').textContent);
+                return 0;
+            }).forEach(c => grid.appendChild(c));
+        });
+    })();
+
+    // ── Scroll-triggered fade-in ──
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ── Add to cart button ──
+    document.querySelectorAll('.btn-shop').forEach(btn => {
+        btn.addEventListener('click', function () {
+            cartCount++;
+            updateCart();
+            const orig = this.textContent;
+            this.textContent = 'Added!';
+            this.style.cssText = 'background:#28a745;border-color:#28a745;color:white;';
+            setTimeout(() => { this.textContent = orig; this.style.cssText = ''; }, 1500);
+        });
+    });
+</script>
 </body>
 </html>

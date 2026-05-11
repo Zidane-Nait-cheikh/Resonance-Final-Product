@@ -9,9 +9,13 @@
     <title>Resonance - Support</title>
     <link rel="stylesheet" href="styling/support.css">
     <link rel="icon" type="image/x-icon" href="assets/pngegg.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-<div style="background-image: linear-gradient(rgb(0, 0, 0), rgba(255, 255, 255, 0)), url('assets/image3.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<div style="background-image: linear-gradient(rgb(0, 0, 0), rgba(0,0,0,0.5), rgba(0,0,0,0)), url('assets/headphonee.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     <nav class="navbar">
         <div class="logo">RESO<span>NANCE</span></div>
         <ul class="nav-links">
@@ -19,6 +23,9 @@
             <li><a href="headphones.html">Headphones</a></li>
             <li><a href="support.html" class="active-link">Support</a></li>
         </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
 
     <header class="page-header support-header">
@@ -30,22 +37,22 @@
     </header>
 </div>
     <section class="help-topics">
-        <div class="topic-card">
+        <div class="topic-card fade-in">
             <i class="fas fa-box-open"></i>
             <h3>Orders & Shipping</h3>
             <p>Track your package or edit an order.</p>
         </div>
-        <div class="topic-card">
+        <div class="topic-card fade-in">
             <i class="fas fa-sync-alt"></i>
             <h3>Returns & Refunds</h3>
             <p>Start a return or check status.</p>
         </div>
-        <div class="topic-card">
+        <div class="topic-card fade-in">
             <i class="fas fa-shield-alt"></i>
             <h3>Warranty</h3>
             <p>Register your product or file a claim.</p>
         </div>
-        <div class="topic-card">
+        <div class="topic-card fade-in">
             <i class="fas fa-book"></i>
             <h3>Product Manuals</h3>
             <p>Download guides for your device.</p>
@@ -174,5 +181,115 @@
         </div>
     </footer>
 
+<script>
+    // ── Mobile hamburger (main nav) ──
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+    }));
+
+    // ── Sticky navbar ──
+    (function () {
+        const mainNav = document.querySelector('.navbar');
+        const sticky = document.createElement('div');
+        sticky.id = 'sticky-nav';
+        sticky.innerHTML = mainNav.innerHTML.replace('id="hamburger"', 'id="sticky-hamburger"');
+        document.body.prepend(sticky);
+        const sh = sticky.querySelector('#sticky-hamburger');
+        const snl = sticky.querySelector('.nav-links');
+        if (sh && snl) {
+            sh.addEventListener('click', () => { sh.classList.toggle('open'); snl.classList.toggle('open'); });
+            snl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { sh.classList.remove('open'); snl.classList.remove('open'); }));
+        }
+        window.addEventListener('scroll', () => sticky.classList.toggle('visible', window.scrollY > 200), { passive: true });
+    })();
+
+    // ── Back to top ──
+    (function () {
+        const btn = document.createElement('button');
+        btn.id = 'back-to-top';
+        btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        btn.title = 'Back to top';
+        document.body.appendChild(btn);
+        window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 400), { passive: true });
+        btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+
+    // ── Scroll-triggered fade-in ──
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ── FAQ accordion ──
+    (function () {
+        document.querySelectorAll('.faq-card').forEach(card => {
+            const p = card.querySelector('p');
+            const h3 = card.querySelector('h3');
+            if (!p || !h3) return;
+
+            // Wrap answer in collapsible div
+            const answerDiv = document.createElement('div');
+            answerDiv.className = 'faq-answer';
+            p.replaceWith(answerDiv);
+            answerDiv.appendChild(p);
+
+            // Add header row with chevron
+            const headerDiv = document.createElement('div');
+            headerDiv.className = 'faq-header';
+            h3.replaceWith(headerDiv);
+            headerDiv.appendChild(h3);
+            const chevron = document.createElement('i');
+            chevron.className = 'fas fa-chevron-down faq-chevron';
+            headerDiv.appendChild(chevron);
+
+            card.addEventListener('click', () => {
+                const isOpen = card.classList.contains('faq-open');
+                document.querySelectorAll('.faq-card').forEach(c => c.classList.remove('faq-open'));
+                if (!isOpen) card.classList.add('faq-open');
+            });
+        });
+    })();
+
+    // ── Topic card → scroll to FAQ ──
+    document.querySelectorAll('.topic-card').forEach(card => {
+        card.addEventListener('click', () => {
+            document.querySelector('.faq-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    // ── FAQ search ──
+    const searchInput = document.querySelector('.search-box input');
+    const searchBtn = document.querySelector('.search-box button');
+    function doSearch() {
+        const q = searchInput.value.toLowerCase().trim();
+        let found = 0;
+        document.querySelectorAll('.faq-card').forEach(card => {
+            const match = !q || card.textContent.toLowerCase().includes(q);
+            card.style.display = match ? '' : 'none';
+            if (match) found++;
+        });
+        if (q && found > 0) document.querySelector('.faq-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    searchBtn.addEventListener('click', doSearch);
+    searchInput.addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(); });
+    searchInput.addEventListener('input', () => { if (!searchInput.value) doSearch(); });
+
+    // ── Contact form feedback ──
+    document.querySelector('.contact-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const btn = this.querySelector('.btn-submit');
+        const orig = btn.textContent;
+        btn.textContent = 'Message Sent!';
+        btn.style.background = '#28a745';
+        setTimeout(() => { btn.textContent = orig; btn.style.background = ''; this.reset(); }, 3000);
+    });
+</script>
 </body>
 </html>

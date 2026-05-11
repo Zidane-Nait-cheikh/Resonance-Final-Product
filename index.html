@@ -9,6 +9,10 @@
     <title>Resonance - Home</title>
     <link rel="stylesheet" href="styling/home.css">
     <link rel="icon" type="image/x-icon" href="assets/pngegg.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 <div style="background: linear-gradient(rgba(0, 0, 0, 0.845), rgba(42, 42, 42, 0.433), rgb(0, 0, 0)), url('assets/headphone.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
@@ -19,6 +23,9 @@
             <li><a href="headphones.html">Headphones</a></li>
             <li><a href="support.html">Support</a></li>
         </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
 
     <header class="hero" style=" background-size: cover; background-position: center;">
@@ -26,19 +33,23 @@
         <div class="hero-text-wrapper">
             <h1>Experience Pure <br> <span class="highlight">Silence</span></h1>
             <p>The new MK-II Noise Cancelling Headphones. Immerse yourself in the music you love, without the distractions.</p>
+            <div class="hero-btns">
+                <a href="headphones.html" class="btn primary">Shop Now</a>
+                <a href="#quality" class="btn secondary">Learn More</a>
+            </div>
         </div>
     </header>
 </div>
     <section class="new-arrival-banner" style="background: linear-gradient(rgb(0, 0, 0), rgba(21, 21, 21, 0.381), rgb(0, 0, 0)), url('https://images.unsplash.com/photo-1613040809024-b4ef748fc94c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center center;">
-        <div class="banner-content">
+        <div class="banner-content fade-in">
             <h2>Introducing the Midnight Series</h2>
             <p>Deep bass. Deeper silence. Experience our newest collection designed for the audiophile in you.</p>
             <a href="headphones.html" class="btn primary">Explore the Collection</a>
         </div>
     </section>
 
-    <section class="quality-section">
-        <div class="quality-container">
+    <section class="quality-section" id="quality">
+        <div class="quality-container fade-in">
             
             <div class="quality-image">
                 <img src="assets/image.png" alt="Sound Quality">
@@ -67,15 +78,18 @@
     </section>
 
     <section class="features-section">
-        <div class="feature-box">
+        <div class="feature-box fade-in">
+            <i class="fas fa-battery-full"></i>
             <h3>40h Battery</h3>
             <p>Listen all day and night with our extended life cells.</p>
         </div>
-        <div class="feature-box">
+        <div class="feature-box fade-in">
+            <i class="fas fa-wifi"></i>
             <h3>Wireless 5.0</h3>
             <p>Seamless connectivity with ultra-low latency.</p>
         </div>
-        <div class="feature-box">
+        <div class="feature-box fade-in">
+            <i class="fas fa-volume-mute"></i>
             <h3>Active NC</h3>
             <p>Block out the world with AI-powered noise cancellation.</p>
         </div>
@@ -122,5 +136,79 @@
             <p>&copy; 2025 Resonance. All rights reserved.</p>
         </div>
     </footer>
+<script>
+    // ── Mobile hamburger (main nav) ──
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+    }));
+
+    // ── Sticky navbar (slides in after scrolling) ──
+    (function () {
+        const mainNav = document.querySelector('.navbar');
+        const sticky = document.createElement('div');
+        sticky.id = 'sticky-nav';
+        sticky.innerHTML = mainNav.innerHTML.replace('id="hamburger"', 'id="sticky-hamburger"');
+        document.body.prepend(sticky);
+        const sh = sticky.querySelector('#sticky-hamburger');
+        const snl = sticky.querySelector('.nav-links');
+        if (sh && snl) {
+            sh.addEventListener('click', () => { sh.classList.toggle('open'); snl.classList.toggle('open'); });
+            snl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { sh.classList.remove('open'); snl.classList.remove('open'); }));
+        }
+        window.addEventListener('scroll', () => sticky.classList.toggle('visible', window.scrollY > 280), { passive: true });
+    })();
+
+    // ── Back to top button ──
+    (function () {
+        const btn = document.createElement('button');
+        btn.id = 'back-to-top';
+        btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        btn.title = 'Back to top';
+        document.body.appendChild(btn);
+        window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 420), { passive: true });
+        btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+
+    // ── Scroll-triggered fade-in ──
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ── Typewriter effect on hero "Silence" ──
+    (function () {
+        const el = document.querySelector('.highlight');
+        if (!el) return;
+        const text = el.textContent;
+        el.textContent = '';
+        el.classList.add('typing-cursor');
+        let i = 0;
+        const type = () => {
+            if (i < text.length) { el.textContent += text[i++]; setTimeout(type, 115); }
+            else { setTimeout(() => el.classList.remove('typing-cursor'), 900); }
+        };
+        setTimeout(type, 700);
+    })();
+
+    // ── Newsletter form feedback ──
+    document.querySelector('.newsletter-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const input = this.querySelector('input[type="email"]');
+        const btn = this.querySelector('button');
+        if (!input.value) return;
+        input.value = '';
+        const orig = btn.textContent;
+        btn.textContent = 'Subscribed!';
+        btn.style.background = '#28a745';
+        setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 3000);
+    });
+</script>
 </body>
 </html>
