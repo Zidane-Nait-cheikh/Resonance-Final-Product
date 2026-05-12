@@ -206,37 +206,48 @@ list-style: none;
     .nav-links li { width: 100%; }
     .nav-links a { display: block; width: 100%; border-radius: 10px; }
 
-    .hero { padding: 40px 5%; min-height: 60vh; }
-    .hero-text-wrapper h1 { font-size: 42px; }
+    .hero {
+        padding: 60px 6% 50px;
+        min-height: 55vh;
+        justify-content: center;
+        text-align: center;
+    }
+    .hero-text-wrapper { max-width: 100%; }
+    .hero-text-wrapper h1 { font-size: 38px; }
     .hero-text-wrapper p { font-size: 1rem; }
+    .hero-btns { justify-content: center; }
 
-    .features-section { flex-direction: column; align-items: center; }
+    .features-section { flex-direction: column; align-items: center; padding: 50px 6%; }
     .feature-box { max-width: 100%; width: 100%; }
 
     .quality-container { flex-direction: column; gap: 30px; }
+    .quality-image { order: -1; }
 
-    .banner-content h2 { font-size: 2.2rem; }
+    .banner-content h2 { font-size: 2rem; }
     .banner-content p { font-size: 1rem; }
-    .new-arrival-banner { height: auto; padding: 60px 20px; }
+    .new-arrival-banner { height: auto; padding: 55px 6%; }
 
     .promo-content h2 { font-size: 2rem; }
     .promo-content p { font-size: 1.1rem; }
-    .promo-slider { height: 45vh; }
+    .promo-slider { height: 42vh; }
 
+    .newsletter { padding: 55px 6%; }
     .newsletter h2 { font-size: 1.8rem; }
     .newsletter-form { flex-direction: column; align-items: center; }
     .newsletter-form input { width: 100%; max-width: 400px; }
     .newsletter-form button { width: 100%; max-width: 400px; }
 
-    .footer-container { flex-direction: column; }
+    .footer-container { flex-direction: column; padding: 0 6%; }
     .footer-col { width: 100%; min-width: unset; }
 }
 
 @media (max-width: 480px) {
-    .hero-text-wrapper h1 { font-size: 30px; }
-    .hero-btns { flex-direction: column; }
-    .hero-btns .btn { text-align: center; }
+    .hero { padding: 50px 5% 40px; min-height: 50vh; }
+    .hero-text-wrapper h1 { font-size: 28px; }
+    .hero-btns { flex-direction: column; align-items: center; gap: 12px; }
+    .hero-btns .btn { text-align: center; width: 100%; max-width: 260px; }
     .quality-text h2 { font-size: 1.8rem; }
+    .quality-section { padding: 50px 5%; }
 }
 
 /* ===== SMOOTH SCROLL ===== */
@@ -319,13 +330,16 @@ img { max-width: 100%; height: auto; }
 @media (max-width: 400px) {
     .logo { font-size: 22px; }
     .navbar { padding: 15px 4%; }
-    .hero { min-height: 50vh; }
-    .hero-text-wrapper h1 { font-size: 26px; }
-    .btn { padding: 10px 20px; font-size: 0.9rem; }
-    .promo-slider { height: 38vh; }
-    .promo-content h2 { font-size: 1.6rem; }
-    .promo-content p { font-size: 0.95rem; }
-    .newsletter h2 { font-size: 1.5rem; }
+    .hero { min-height: 48vh; padding: 44px 4% 36px; }
+    .hero-text-wrapper h1 { font-size: 24px; line-height: 1.25; }
+    .hero-text-wrapper p { font-size: 0.92rem; }
+    .btn { padding: 10px 18px; font-size: 0.88rem; }
+    .promo-slider { height: 36vh; }
+    .promo-content h2 { font-size: 1.5rem; }
+    .promo-content p { font-size: 0.9rem; }
+    .newsletter h2 { font-size: 1.4rem; }
     .newsletter-form input, .newsletter-form button { max-width: 100%; }
+    .feature-box i { font-size: 2.5rem; }
+    .feature-box h3 { font-size: 1.2rem; }
     #back-to-top { bottom: 15px; right: 15px; width: 40px; height: 40px; font-size: 0.9rem; }
 }

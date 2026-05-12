@@ -254,27 +254,32 @@ body { background-color: #121212; color: #ffffff; line-height: 1.6; }
     .nav-links li { width: 100%; }
     .nav-links a { display: block; width: 100%; border-radius: 10px; }
 
-    .support-header { height: 35vh; padding: 20px; }
-    .support-header h1 { font-size: 2rem; }
-    .search-box { max-width: 100%; }
+    .support-header { height: auto; min-height: 30vh; padding: 40px 6%; }
+    .support-header h1 { font-size: 1.9rem; }
+    .search-box { max-width: 100%; width: 100%; }
 
-    .help-topics { gap: 15px; padding: 30px 15px; }
-    .topic-card { width: calc(50% - 10px); min-width: 140px; padding: 20px 15px; }
+    .help-topics { gap: 12px; padding: 30px 5%; }
+    .topic-card { width: calc(50% - 8px); min-width: 130px; padding: 20px 12px; }
 
     .faq-grid { grid-template-columns: 1fr; }
-    .faq-section h2 { font-size: 1.8rem; }
+    .faq-section { padding: 0 5%; }
+    .faq-section h2 { font-size: 1.7rem; }
 
     .contact-container { flex-direction: column; gap: 30px; }
     .contact-info h2 { font-size: 1.8rem; }
-    .contact-form-wrapper { padding: 25px; }
+    .contact-form-wrapper { padding: 22px; }
 
-    .footer-container { flex-direction: column; }
+    .footer-container { flex-direction: column; padding: 0 5%; }
     .footer-col { width: 100%; min-width: unset; }
 }
 
 @media (max-width: 480px) {
-    .topic-card { width: 100%; }
-    .support-header h1 { font-size: 1.6rem; }
+    .topic-card { width: calc(50% - 8px); padding: 16px 10px; }
+    .topic-card i { font-size: 1.8rem; margin-bottom: 10px; }
+    .topic-card h3 { font-size: 0.9rem; }
+    .topic-card p { font-size: 0.8rem; }
+    .support-header h1 { font-size: 1.5rem; }
+    .faq-section h2 { font-size: 1.5rem; }
 }
 
 /* ===== SMOOTH SCROLL ===== */
@@ -360,13 +365,16 @@ img { max-width: 100%; height: auto; }
 @media (max-width: 400px) {
     .logo { font-size: 22px; }
     .navbar { padding: 15px 4%; }
-    .support-header { height: 30vh; }
-    .support-header h1 { font-size: 1.4rem; }
-    .search-box { width: 95%; padding: 4px; }
+    .support-header { min-height: 28vh; padding: 35px 4%; }
+    .support-header h1 { font-size: 1.3rem; }
+    .search-box { width: 100%; padding: 4px; }
     .search-box input { padding: 8px 12px; font-size: 0.9rem; }
-    .topic-card { flex: 1 1 100%; }
+    /* Full-width topic cards on very small phones */
+    .topic-card { flex: 1 1 100%; width: 100%; }
     .faq-card { padding: 16px; }
+    .faq-icon { width: 42px; height: 42px; font-size: 1.2rem; }
     .contact-form-wrapper { padding: 16px; }
+    .contact-info h2 { font-size: 1.5rem; }
     #back-to-top { bottom: 15px; right: 15px; width: 40px; height: 40px; font-size: 0.9rem; }
 }
 
